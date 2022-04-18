@@ -12,12 +12,16 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/AppPages/AboutModular.vue'),
       },
       {
-        path: '/dynamic',
-        component: () => import('pages/AppPages/Dynamic.vue'),
+        path: '/details',
+        component: () => import('pages/AppPages/Details.vue'),
+      },      
+      {
+        path: '/login',
+        component: () => import('pages/AppPages/Login.vue'),
       },
       {
-        path: '/props',
-        component: () => import('pages/AppPages/PropsPage.vue'),
+        path: '/repos',
+        component: () => import('pages/AppPages/Repos.vue'),
       },
     ],
   },

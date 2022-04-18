@@ -7,5 +7,5 @@ A single-page application (SPA) is a web application or website that interacts w
 ![SPA Architecture Diagram](spa001.svg)
 
 ## References
-https://en.wikipedia.org/wiki/Single-page_application
+https://en.wikipedia.org/wiki/Single-page_application  
 https://elmprogramming.com/what-is-a-single-page-app.html

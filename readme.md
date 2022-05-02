@@ -9,7 +9,7 @@
 $ npm install
 ```
 
-`quasar dev` is to run the application on local.
+`quasar dev` is to run the application on local and launch it on your default browser automatically.
 ```shell
 $ quasar dev
 ```

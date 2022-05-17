@@ -33,10 +33,7 @@
       <div id="app">
         <div id="nav">
           <router-link to="/">Home</router-link> |
-          <router-link to="/login">LOGIN</router-link> |
-          <router-link to="/about">About Me</router-link> |
-          <router-link to="/repos">My Repos</router-link> |
-          <router-link to="/details">Repo Details</router-link>
+          <router-link to="/repos">My Repos</router-link>
         </div>
         <router-view />
       </div>

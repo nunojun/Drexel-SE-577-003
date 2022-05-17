@@ -1,10 +1,10 @@
 <template>
-  <div class="q-pa-md">
-    <q-banner class="bg-primary text-white">
+  <div class="q-pa-md center">
+    <q-banner class="bg-primary text-white center">
       <h6>GitHub Repo Information</h6>
     </q-banner>
     <div class="row">
-      <q-table
+      <q-table class="center"
         :title="ghUrl"
         dense
         :rows="rows"
@@ -12,7 +12,7 @@
         row-key="id"
       />
     </div>
-    <div class="q-pa-sm q-gutter-sm">
+    <div class="q-pa-sm q-gutter-sm center">
       <q-btn label="Change Github URL" @click="onTest()" color="secondary" />
     </div>
   </div>
@@ -65,22 +65,25 @@ const loadRepos = async () => {
   }
   console.log('index.value ', index.value, ', ghUrl ', ghUrl.value)
 
-  const res = await axios.get(ghUrl.value);
-
-  rows.value = [];
-  const rList = res.data as rowType[];
-  const resList = rList.map((row) => {
-    const mappedRow: rowType = {
-      id: row.id,
-      name: row.name,
-      url: row.url,
-      language: row.language,
-      updated_at: row.updated_at,
-    };
-    return mappedRow;
-  });
-  console.log('DEBUG', resList);
-  rows.value = resList;
+  try {
+    rows.value = []
+    const res = await axios.get(ghUrl.value);
+    const rList = res.data as rowType[];
+    const resList = rList.map((row) => {
+      const mappedRow: rowType = {
+        id: row.id,
+        name: row.name,
+        url: row.url,
+        language: row.language,
+        updated_at: row.updated_at,
+      };
+      return mappedRow;
+    });
+    console.log('DEBUG', resList);
+    rows.value = resList; 
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 onMounted(() => loadRepos())

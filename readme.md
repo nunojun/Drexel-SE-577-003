@@ -19,7 +19,7 @@ Please refer to the guideline below.
     ```shell
     $ npm run dev
     ```
-For more details of the backend implementation, please refer to [server/readme.md](server/readme).  
+For more details of the backend implementation, please refer to [README for server](server/readme.md).  
 
 #### Client (Frontend)
 1. First, move to the **client** directory.
@@ -35,4 +35,4 @@ For more details of the backend implementation, please refer to [server/readme.m
     $ quasar dev
     ```
 To install quasar on your local, please refer to [this page](https://v1.quasar.dev/quasar-cli/installation).  
-For more details of the frontend implementation, please refer to [client/readme.md](client/readme.md).  
+For more details of the frontend implementation, please refer to [README for client](client/readme.md).  

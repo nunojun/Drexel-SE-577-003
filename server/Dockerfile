@@ -1,44 +1,21 @@
 FROM node:alpine
 
-LABEL version="3.0.0"
-LABEL description="Example Fastify (Node.js) webapp Docker Image"
-LABEL maintainer="Sandro Martini <sandro.martini@gmail.com>"
+LABEL maintainer="Bumjoon Kim <nunojun@gmail.com>"
 
-# update packages, to reduce risk of vulnerabilities
-RUN apk update && apk upgrade
-# RUN apk cache clean
+# Create nodejs user not to use root
+RUN addgroup -S nodejs && adduser -S nodejs -G nodejs
+USER nodejs
 
-# set a non privileged user to use when running this image
-#RUN addgroup -S nodejs && adduser -S nodejs -G nodejs
-#USER nodejs
-# set right (secure) folder permissions
-#RUN mkdir -p /home/nodejs/app/node_modules && chown -R nodejs:nodejs /home/nodejs/app
-RUN mkdir -p /home/nodejs/app/node_modules
-
+RUN mkdir -p /home/nodejs/app
 WORKDIR /home/nodejs/app
 
-# set default node env
-# to be able to run tests (for example in CI), do not set production as environment
 ENV NODE_ENV=production
 
-ENV NPM_CONFIG_LOGLEVEL=warn
+COPY --chown=nodejs:nodejs ["package.json", "package-lock.json*", "./"]
 
-# copy project definition/dependencies files, for better reuse of layers
-#COPY --chown=nodejs:nodejs package*.json ./
-COPY package*.json ./
-
-# copy stuff required by prepublish (postinstall)
-#COPY .snyk ./
-
-# install dependencies here, for better reuse of layers
-RUN npm install && npm audit fix && npm cache clean --force
-
-# copy all sources in the container (exclusions in .dockerignore file)
-#COPY --chown=nodejs:nodejs . .
-COPY . .
+RUN npm install --production
+COPY --chown=nodejs:nodejs . .
 
 EXPOSE 5000 
 
-# ENTRYPOINT [ "npm" ]
-# CMD [ "npm", "start" ]
-CMD [ "node", "server" ]
+CMD ["node", "server"]

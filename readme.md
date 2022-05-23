@@ -12,20 +12,19 @@ The goal of this release no.3 is,
 4. Create a makefile that covers every process above.
 
 > **Note** 
-All the commands below are based on the `make` command.  
-For more details, please refer to the [makefile](makefile).
+All the commands below are based on the `make` command. For more details, please refer to the [makefile](makefile).
 
 ### "How-to" steps
 #### Prerequisites
 Before you dive into dockerizing, the required binaries should be created ahead.  
 Please refer to the commands below for creating them.  
 ```shell
-$ make build-client				// to build client
-$ make build-server				// to build server
-$ make build					// to build client & server
-$ make clean-client				// (optional) to remove client
-$ make clean-server				// (optional) to remove server
-$ make clean					// (optional) to remove client & server
+$ make build-client			// to build client
+$ make build-server			// to build server
+$ make build				// to build client & server
+$ make clean-client			// (optional) to remove client
+$ make clean-server			// (optional) to remove server
+$ make clean				// (optional) to remove client & server
 ```
 #### Build docker image(s)
 These are the list of commands to build & remove docker images.  

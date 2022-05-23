@@ -11,8 +11,9 @@ The goal of this release no.3 is,
 3. Run & stop both applications together as one service by using `docker-compose` command.
 4. Create a makefile that covers every process above.
 
-> **Note** 
-All the commands below are based on the `make` command. For more details, please refer to the [makefile](makefile).
+> **Note**   
+All the commands below are based on the `make` command.  
+For more details, please refer to the [makefile](makefile).
 
 ### "How-to" steps
 #### Prerequisites

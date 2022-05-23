@@ -2,24 +2,14 @@
 # Drexel-SE-577-003: Software Architecture in Spring 2021-2022
 
 ## Project Release No.3
-### Introduction
-From the previous release no.2, we have 2 applications in separated directories, ** client** and **server**.  
-The goal of this release no.3 is,
-1. Dockerize **client** and **server** applications.
-	- Create Dockerfiles & build docker images.
-2. Run & stop each application respectively by using `docker` command.
-3. Run & stop both applications together as one service by using `docker-compose` command.
-4. Create a makefile that covers every process above.
-
 > **Note**   
-All the commands below are based on the `make` command.  
-For more details, please refer to the [makefile](makefile).
-
-### "How-to" steps
+This document contains the instruction of "how-to" only.
+For more details on the architecture, please refer to [Release3.md](Release3.md).
+### Basic Instructions
 #### Quick Start Guide
 This is the steps you can follow, as assuming you start this from scratch.  
 ##### Build and Run
-After finishing the following steps, you can launch the application from a web browser with the URL http://localhost:8080.
+After the following steps finished, you can launch the application from a web browser with the URL http://localhost:8080.
 1. Build **client** and **server** applications.
 ```shell
 $ make build
@@ -41,7 +31,10 @@ $ make down-docker-compose
 ```shell
 $ make clean && make clean-docker
 ```
-#### Details
+#### Details on Makefile
+> **Note**   
+All the commands below are based on the `make` command.  
+For more details, please refer to the [makefile](makefile).
 ##### Prerequisites
 Before you dive into dockerizing, the required binaries should be created ahead.  
 Please refer to the commands below for creating them.  

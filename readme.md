@@ -32,7 +32,7 @@ These are the list of commands to build & remove docker images.
 ```shell
 $ make build-docker-client		// to build client docker image
 $ make build-docker-server		// to build server docker image
-$ make build			        // to build client & server docker images
+$ make build-docker		        // to build client & server docker images
 $ make clean-docker-client		// (optional) to remove client docker image
 $ make clean-docker-server		// (optional) to remove server docker image
 $ make clean-docker		        // (optional) to remove client & server docker image
@@ -48,4 +48,26 @@ $ make run-docker-client		// to run client only
 $ make run-docker-server		// to run server only
 $ make up-docker-compose		// to run client & server
 $ make down-docker-compose		// to stop client & server
+```
+#### Example of basic steps
+This is the steps you can follow, as assuming you start this from scratch.  
+1. Build **client** and **server** applications.
+```shell
+$ make build
+```
+2. Build the docker images of **client** and **server**
+```shell
+$ make build-docker
+```
+3. Run **client** and **server** applications (by using `docker-compose` internally).
+```shell
+$ make up-docker-compose
+```
+4. Stop **client** and **server** applications (by using `docker-compose` internally).
+```shell
+$ make down-docker-compose
+```
+5. Remove everything from your local, including all the binaries and docker images.
+```shell
+$ make clean && make clean-docker
 ```

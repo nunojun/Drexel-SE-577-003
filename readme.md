@@ -1,38 +1,51 @@
+
 # Drexel-SE-577-003: Software Architecture in Spring 2021-2022
 
-## Project Release No.2
-Note that the release no.2 consists of the backend and frontend in 2 different directories, **server** and **client**.
-Both backend and frontend should be run seperately.  
-Please refer to the guideline below.
+## Project Release No.3
+### Introduction
+From the previous release no.2, we have 2 applications in separated directories, ** client** and **server**.  
+The goal of this release no.3 is,
+1. Dockerize **client** and **server** applications.
+	- Create Dockerfiles & build docker images.
+2. Run & stop each application respectively by using `docker` command.
+3. Run & stop both applications together as one service by using `docker-compose` command.
+4. Create a makefile that covers every process above.
 
-### How to run the application
-#### Server (Backend)
-1. First, move to the **server** directory.
-    ```shell
-    $ cd ./server
-    ```
-2. Run `npm install` to install all the dependencies
-    ```shell
-    $ npm install
-    ```
-3. Run `npm run dev` to run the server.
-    ```shell
-    $ npm run dev
-    ```
-For more details of the backend implementation, please refer to [README for server](server/readme.md).  
+> **Note** 
+All the commands below are based on the `make` command.  
+For more details, please refer to the [makefile](makefile).
 
-#### Client (Frontend)
-1. First, move to the **client** directory.
-    ```shell
-    $ cd ./client
-    ```
-2. Run `npm install` to install all the dependecies.
-    ```shell
-    $ npm install
-    ```
-3. Run `quasar dev` to run the client
-    ```shell
-    $ quasar dev
-    ```
-To install quasar on your local, please refer to [this page](https://v1.quasar.dev/quasar-cli/installation).  
-For more details of the frontend implementation, please refer to [README for client](client/readme.md).  
+### "How-to" steps
+#### Prerequisites
+Before you dive into dockerizing, the required binaries should be created ahead.  
+Please refer to the commands below for creating them.  
+```shell
+$ make build-client				// to build client
+$ make build-server				// to build server
+$ make build					// to build client & server
+$ make clean-client				// (optional) to remove client
+$ make clean-server				// (optional) to remove server
+$ make clean					// (optional) to remove client & server
+```
+#### Build docker image(s)
+These are the list of commands to build & remove docker images.  
+```shell
+$ make build-docker-client		// to build client docker image
+$ make build-docker-server		// to build server docker image
+$ make build					// to build client & server docker images
+$ make clean-docker-client		// (optional) to remove client docker image
+$ make clean-docker-server		// (optional) to remove server docker image
+$ make clean-docker				// (optional) to remove client & server docker image
+```
+#### Run docker container(s)
+Once the docker images are prepared, you are ready to run the containers.
+You can run **client** and **server** respectively, or you can run them together.
+> **NOTE**
+> When you run them separately, `docker run` is used.
+> When you run them together, `docker compose` is used.
+```shell
+$ make run-docker-client		// to run client only
+$ make run-docker-server		// to run server only
+$ make up-docker-compose		// to run client & server
+$ make down-docker-compose		// to stop client & server
+```

@@ -32,17 +32,17 @@ These are the list of commands to build & remove docker images.
 ```shell
 $ make build-docker-client		// to build client docker image
 $ make build-docker-server		// to build server docker image
-$ make build					// to build client & server docker images
+$ make build			// to build client & server docker images
 $ make clean-docker-client		// (optional) to remove client docker image
 $ make clean-docker-server		// (optional) to remove server docker image
-$ make clean-docker				// (optional) to remove client & server docker image
+$ make clean-docker		// (optional) to remove client & server docker image
 ```
 #### Run docker container(s)
 Once the docker images are prepared, you are ready to run the containers.
 You can run **client** and **server** respectively, or you can run them together.
-> **NOTE**
-> When you run them separately, `docker run` is used.
-> When you run them together, `docker compose` is used.
+> **NOTE**  
+When you run them separately, `docker run` is used.  
+When you run them together, `docker compose` is used.  
 ```shell
 $ make run-docker-client		// to run client only
 $ make run-docker-server		// to run server only

@@ -5,11 +5,11 @@ export const useIndexStore = defineStore('index', {
     index: 0
   }),
   getters: {
-    nextIndex: (state) => (state.index + 1) % 3
+    nextIndex: (state) => (state.index + 1) % 2
   },
   actions: {
     getNextIndex() {
-      this.index = (this.index + 1) % 3
+      this.index = (this.index + 1) % 2
     }
   }
 })

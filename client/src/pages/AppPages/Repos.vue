@@ -5,7 +5,7 @@
     </q-banner>
     <div class="row">
       <q-table class="center"
-        :title="ghUrl"
+        :title="tableTitle"
         dense
         :rows="rows"
         :columns="columns"
@@ -49,7 +49,9 @@ const columns = [
   { name: 'updated_at', label: 'Updated', align: 'left', field: 'updated_at' },
 ];
 let rows = ref([] as rowType[]);
-let ghUrl = ref('Undefined')
+let tableTitle = ref('Undefined')
+let ghUrl = '' 
+let reqHeaders = {}
 
 watch([index], () => {
   console.log('index changed, index: ', index);
@@ -57,17 +59,18 @@ watch([index], () => {
 
 const loadRepos = async () => {
   if (index.value === 0) {
-    ghUrl.value = 'http://localhost:5000/gh'
-  } else if (index.value === 1) {
-    ghUrl.value = 'http://localhost:5000/gh_sec'
+    tableTitle.value = 'Public Access'
+    ghUrl = 'https://api.github.com/users/nunojun/repos'
   } else {
-    ghUrl.value = 'http://localhost:5000/gh_db'
+    tableTitle.value = 'Secured Access (w/ OAuth)'
+    ghUrl = 'https://api.github.com/user/repos'
+    Object.assign(reqHeaders, {'authorization': 'Token ' + process.env.GITHUB_ACCESS_TOKEN})
   }
-  console.log('index.value ', index.value, ', ghUrl ', ghUrl.value)
+  console.log('index.value ', index.value, ', tableTitle ', tableTitle.value, ', ghUrl ', ghUrl)
 
   try {
     rows.value = []
-    const res = await axios.get(ghUrl.value);
+    const res = await axios.get(ghUrl, { headers: reqHeaders });
     const rList = res.data as rowType[];
     const resList = rList.map((row) => {
       const mappedRow: rowType = {

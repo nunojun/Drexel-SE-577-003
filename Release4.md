@@ -15,6 +15,6 @@ Users never pass any file with secret to the host manually in generic web applic
 Instead, we can think about other auth logics as following.
 1. Username & Password  
 We need to have a database and passwords should be stored as hashed. 
-2. OIDC based on OAuth2  
+2. OIDC SSO based on OAuth2  
 This could be the most preferable way in web authentication these days.  
 A user can be granted by other authorities (Github, Google, Facebook, etc) and my **client** can authorize the user accordingly.

@@ -62,6 +62,29 @@ fastify.get('/gh_db', async (req, reply) => {
   reply.send(data)
 })
 
+fastify.get('/gh_org/:name', async (req, reply) => {
+  const {name} = req.params
+  try {
+    res = await axios.get('https://api.github.com/users/' + name + '/repos')
+  } catch (error) {
+    reply.send(error)
+  }
+
+  let repos = []
+  for (let i = 0; i < res.data.length; i++) {
+    if (res.data[i].name === '.github') {
+      continue;
+    }
+    let repo = {}
+    repo.name = res.data[i].name
+    repo.url = res.data[i].html_url
+    repo.desc = res.data[i].description
+    repos.push(repo)
+  }
+
+  reply.send(repos)
+})
+
 
 const start = async() => {
   try {

@@ -33,7 +33,8 @@
       <div id="app">
         <div id="nav">
           <router-link to="/">Home</router-link> |
-          <router-link to="/repos">My Repos</router-link>
+          <router-link to="/repos">My Repos</router-link> |
+          <router-link to="/orgs">Orgs</router-link>
         </div>
         <router-view />
       </div>

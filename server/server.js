@@ -76,9 +76,11 @@ fastify.get('/gh_org/:name', async (req, reply) => {
       continue;
     }
     let repo = {}
+    repo.id = res.data[i].id
     repo.name = res.data[i].name
     repo.url = res.data[i].html_url
-    repo.desc = res.data[i].description
+    repo.language = res.data[i].language
+    repo.updated_at = res.data[i].updated_at
     repos.push(repo)
   }
 

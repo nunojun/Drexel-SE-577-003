@@ -23,6 +23,14 @@ If `gh_result.yml` does not exist,
 this method invokes GET http://api.github.com/users/nunojun/repos first, store it into the file and return the result.  
 That being said, only the first invocation retrieves the result from the Github API and after then, the result is coming from the YAML file.  
 No authentication is required.  
+### GET /gh_org/{orgName}
+This returns the *filtered* result of all the repos in a certain organization.  
+This is a redirection to `GET http://api.github.com/users/{orgName}/repos` but only the following fields are returned.
+- id
+- name
+- url
+- language
+- updated_at
 ### GET /docs
 This shows the Swagger API document, created by **[fastify-swagger](https://github.com/fastify/fastify-swagger)**.  
 Note that this is NOT being used by the frontend application.  

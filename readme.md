@@ -1,10 +1,10 @@
 
 # Drexel-SE-577-003: Software Architecture in Spring 2021-2022
 
-## Project Release No.3
+## Project Final Release
 > **Note**   
 This document contains the instruction of "how-to" only.
-For more details on the architecture, please refer to [Release3.md](Release3.md).
+For more details on the architecture, please refer to [FinalRelease.md](FinalRelease.md).
 ### Basic Instructions
 #### Quick Start Guide
 This is the steps you can follow, as assuming you start this from scratch.  
